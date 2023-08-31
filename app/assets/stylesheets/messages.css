@@ -124,6 +124,11 @@
   display: flex;
 }
 
+.select-box{
+  width: 30%;
+  font-size: 12px;
+}
+
 .form-message {
   border: none;
   height: 50px;
