@@ -1,103 +1,35 @@
-<div class="chat-room-form">
+<div class='chat-room-form'>
   <h1>新規チャットルーム</h1>
-  <%= form_with model: @room, local: true do |f| %>
-    <div class="chat-room-form__field">
-      <div class="chat-room-form__field--left">
-        <%= f.label :name, "チャットルーム名", class: "chat-room-form__label" %>
+  <%=form_with model: @room, local: true do |f|%>
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'>
+        <%= f.label :name, :チャットルーム名, class: 'chat-room-form__label'%>
       </div>
-      <div class="chat-room-form__field--right">
-        <%= f.text_field :name, class: "chat__room_name chat-room-form__input", placeholder: "チャットルーム名を入力してください" %>
-      </div>
-    </div>
-
-    <div class="chat-room-form__field">
-      <div class="chat-room-form__field--left">
-        <label class="chat-room-form__label" for="user-search-input">ユーザー検索</label>
-      </div>
-      <div class="chat-room-form__field--right">
-        <input type="text" id="user-search-input" class="chat-room-form__input" placeholder="ユーザー名で検索">
+      <div class='chat-room-form__field--right'>
+        <%= f.text_field :name, class: 'chat__room_name chat-room-form__input', placeholder: 'チャットルーム名を入力してください'%>
       </div>
     </div>
-
-    <div class="chat-room-form__field">
-      <div class="chat-room-form__field--left"></div>
-      <div class="chat-room-form__field--right">
-        <select name="room[user_ids][]" id="user-select" class="user-select">
+    <div class='chat-room-form__field'>
+    </div>
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'>
+        <label class='chat-room-form__label' for='chat_room_チャットメンバー'>チャットメンバー</label>
+      </div>
+      <div class='chat-room-form__field--right'>
+        <select name="room[user_ids][]", class = 'user-select'>
           <option value="">チャットするユーザーを選択してください</option>
           <% User.where.not(id: current_user.id).each do |user| %>
-            <option value="<%= user.id %>"><%= user.name %></option>
+            <option value=<%= user.id %>><%= user.name %></option>
           <% end %>
         </select>
-        <input type="hidden" name="room[user_ids][]" value="<%= current_user.id %>">
-        <button type="button" id="add-user-button">ユーザーを追加</button>
+        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
       </div>
     </div>
-
-    <div class="chat-room-form__field">
-      <div class="chat-room-form__field--left">選択したユーザー:</div>
-      <div class="chat-room-form__field--right" id="selected-users-list">
-        <!-- ここに選択したユーザーが追加されます -->
-      </div>
-    </div>
-
-    <div class="chat-room-form__field">
-      <div class="chat-room-form__field--left"></div>
-      <div class="chat-room-form__field--right">
-        <%= f.submit "新しいチャットルームを作成", class: "chat-room-form__action-btn" %>
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'></div>
+      <div class='chat-room-form__field--right'>
+        <%= f.submit class: 'chat-room-form__action-btn'%>
       </div>
     </div>
   <% end %>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="module">
-  import { someFunction } from "./javascript/chat_rooms"; // chat_rooms.js内の適切な関数またはオブジェクト名を指定
-
-  // ページ読み込み後の処理を指定します
-  document.addEventListener("DOMContentLoaded", () => {
-    // ページが読み込まれた後に実行したいコードをここに記述します
-    someFunction(); // chat_rooms.js内の関数を呼び出す例
-  });
-
-    $(document).on("turbolinks:load", function () {
-      // ユーザー名での検索機能
-      $("#user-search-input").on("input", function () {
-        const searchTerm = $(this).val();
-
-        // Ajaxリクエストを送信して検索結果をリアルタイム表示
-        $.ajax({
-          url: "/users/search",
-          method: "GET",
-          data: { search: searchTerm },
-          dataType: "json",
-          success: function (data) {
-            // 成功時の処理: dataに検索結果が含まれる
-            // ここに検索結果を表示するコードを追加する
-            $("#user-search-results").html(data);
-          },
-          error: function (error) {
-            // エラー時の処理
-            console.error("検索エラー:", error);
-          }
-        });
-      });
-
-      // ユーザー追加ボタンのクリックイベント
-      $("#add-user-button").click(function () {
-        const selectedUserId = $("#user-select").val();
-        const selectedUserName = $("#user-select option:selected").text();
-
-        // 選択したユーザーを表示するための要素を作成
-        const userElement = $("<div>").text(selectedUserName);
-
-        // 選択したユーザーリストに追加
-        $("#selected-users-list").append(userElement);
-      });
-
-      // 選択したユーザーの削除ボタンのクリックイベント
-      $("#selected-users-list").on("click", ".remove-user-button", function () {
-        // クリックされた削除ボタンの親要素を取得し、それを削除
-        $(this).parent().remove();
-      });
-    });
-</script>
