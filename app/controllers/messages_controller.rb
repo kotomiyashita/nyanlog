@@ -2,7 +2,13 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @room = Room.find(params[:room_id])
-    @messages = @room.messages.includes(:user)
+
+    if params[:category_id].present? && params[:category_id] != ''
+      @messages = @room.messages.where(category_id: params[:category_id]).includes(:user)
+    else
+      @messages = @room.messages.includes(:user)
+    end
+
   end
 
   def create
@@ -14,6 +20,12 @@ class MessagesController < ApplicationController
       @messages = @room.messages.includes(:user)
       render :index, status: :unprocessable_entity
     end
+
+    respond_to do |format|
+      format.html # 通常のHTMLレスポンス
+      format.json { render json: @messages } # JSONレスポンス
+    end
+
   end
 
   private

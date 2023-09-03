@@ -4,6 +4,12 @@
       <div class="header-title">
         <%= @room.name %>
       </div>
+      <div class="header-category">
+        <%= form_tag(room_messages_path(@room), method: :get, class: 'category-filter', remote: true) do %>
+          <%= select_tag :category_id, options_for_select([['全て', ''], *Category.where(id: 2..6).pluck(:name, :id)], (params[:category_id] || '')), class: 'filter-selectbox' %>
+          <%= submit_tag '🔍' , class: 'search-submit' %>
+        <% end %>
+      </div>
     </div>
     <div class="right-header">
       <div class="header-button">
@@ -30,6 +36,7 @@
 </div>
 
 <script>
+
   document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.hidden').addEventListener('change', function(e) {
       if (e.target.files.length > 8) {
