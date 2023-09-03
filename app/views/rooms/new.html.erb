@@ -1,35 +1,120 @@
 <div class='chat-room-form'>
   <h1>新規チャットルーム</h1>
-  <%=form_with model: @room, local: true do |f|%>
+  <%= form_with model: @room, local: true do |f| %>
+    <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
-        <%= f.label :name, :チャットルーム名, class: 'chat-room-form__label'%>
+        <%= f.label :name, :チャットルーム名, class: 'chat-room-form__label' %>
       </div>
       <div class='chat-room-form__field--right'>
-        <%= f.text_field :name, class: 'chat__room_name chat-room-form__input', placeholder: 'チャットルーム名を入力してください'%>
+        <%= f.text_field :name, class: 'chat__room_name chat-room-form__input', placeholder: 'チャットルーム名を入力してください' %>
       </div>
     </div>
-    <div class='chat-room-form__field'>
-    </div>
+
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
-        <label class='chat-room-form__label' for='chat_room_チャットメンバー'>チャットメンバー</label>
+        <label class='chat-room-form__label' for='room_user_ids'>チャットメンバー</label>
       </div>
       <div class='chat-room-form__field--right'>
-        <select name="room[user_ids][]", class = 'user-select'>
-          <option value="">チャットするユーザーを選択してください</option>
+        <select name='room[user_ids][]' id='room_user_ids' class='user-select' multiple='multiple'>
+          <option value=''>チャットするユーザーを選択してください</option>
           <% User.where.not(id: current_user.id).each do |user| %>
-            <option value=<%= user.id %>><%= user.name %></option>
+            <option value='<%= user.id %>'><%= user.name %></option>
           <% end %>
         </select>
-        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
+        <button type="button" id="add-user-button">ユーザー追加</button>
+        <!-- 選択したユーザーを一時的に保持するための要素 -->
+        <div id="selected-users"></div>
       </div>
     </div>
+
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'>選択したユーザー:</div>
+      <div class='chat-room-form__field--right' id='selected-users-list'>
+        <!-- ここに選択したユーザーが追加されます -->
+      </div>
+    </div>
+
+    <!-- 削除ボタンがクリックされたときに選択したユーザーIDを保持するためのフィールド -->
+    <%= f.hidden_field :user_ids, id: 'selected-user-ids' %>
+    
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'></div>
       <div class='chat-room-form__field--right'>
-        <%= f.submit class: 'chat-room-form__action-btn'%>
+        <%= f.submit '新しいチャットルームを作成', class: 'chat-room-form__action-btn' %>
       </div>
     </div>
   <% end %>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // ユーザー追加ボタンのクリックイベント
+  const addUserButton = document.getElementById('add-user-button');
+  const selectedUsers = document.getElementById('selected-users');
+  const userSelect = document.getElementById('room_user_ids'); // userSelect を追加
+  
+  // 初期選択を無効にする
+  userSelect.options[0].disabled = true;
+  userSelect.addEventListener('change', function () {
+    // ユーザーが選択したら初期選択を削除する
+    userSelect.options[0].selected = false;
+  });
+
+  // ユーザーIDを保持する隠しフィールド
+  const selectedUserIdsInput = document.getElementById('selected-user-ids');
+  const selectedUserIds = [];
+
+  addUserButton.addEventListener('click', function () {
+    const selectedUserId = userSelect.value;
+    const selectedUserName = userSelect.options[userSelect.selectedIndex].text;
+
+    // 選択したユーザーを表示するための要素を作成
+    const userElement = document.createElement('div');
+    userElement.textContent = selectedUserName;
+
+    // 選択したユーザーを一時的に保持する要素に追加
+    selectedUsers.appendChild(userElement);
+
+    // 削除ボタンを作成
+    const removeUserButton = document.createElement('button');
+    removeUserButton.type = 'button';
+    removeUserButton.classList.add('remove-user-button');
+    removeUserButton.textContent = '削除';
+
+    // 削除ボタンをユーザーエレメントに追加
+    userElement.appendChild(removeUserButton);
+
+    // 削除ボタンのクリックイベント
+    removeUserButton.addEventListener('click', function () {
+      // ユーザーエレメントを削除
+      userElement.remove();
+      
+      // ユーザーIDをselectedUserIdsから削除
+      const index = selectedUserIds.indexOf(selectedUserId);
+      if (index > -1) {
+        selectedUserIds.splice(index, 1);
+      }
+      
+      // selectedUserIdsをカンマ区切りの文字列に変換
+      selectedUserIdsInput.value = selectedUserIds.join(',');
+    });
+    
+    // ユーザーIDをselectedUserIdsに追加
+    selectedUserIds.push(selectedUserId);
+    
+    // selectedUserIdsをカンマ区切りの文字列に変換
+    selectedUserIdsInput.value = selectedUserIds.join(',');
+  });
+});
+</script>
