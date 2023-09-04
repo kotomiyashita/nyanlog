@@ -38,6 +38,24 @@ https://nyanlog.onrender.com
 # 洗い出した要件
 https://docs.google.com/spreadsheets/d/1wFhU2WeoMUDiP6p67OB_yW-sgrNzEcMmIWWezHZSA2E/edit?usp=sharing
 
+# 実装した機能
+## ユーザー管理機能
+ログインページ  
+[![Image from Gyazo](https://i.gyazo.com/a22106cd2ce2b31e9030911d911c2803.png)](https://gyazo.com/a22106cd2ce2b31e9030911d911c2803)  
+新規登録ページ  
+[![Image from Gyazo](https://i.gyazo.com/37fa9801b082a23157370d0aaf33449c.png)](https://gyazo.com/37fa9801b082a23157370d0aaf33449c)  
+
+## チャットルーム作成機能
+チャットルーム新規作成  
+[![Image from Gyazo](https://i.gyazo.com/f114698c634123596c2ca83c14b686fe.png)](https://gyazo.com/f114698c634123596c2ca83c14b686fe)  
+作成したチャットルーム  
+[![Image from Gyazo](https://i.gyazo.com/44fb18435b651287bdcc71ff9ffe36a1.png)](https://gyazo.com/44fb18435b651287bdcc71ff9ffe36a1)  
+## メッセージ投稿機能
+画像とメッセージをつけて投稿できる  
+[![Image from Gyazo](https://i.gyazo.com/38a2bad979184d6ca38c836f8d904ec9.jpg)](https://gyazo.com/38a2bad979184d6ca38c836f8d904ec9)  
+カテゴリーごとに分けて表示できる  
+[![Image from Gyazo](https://i.gyazo.com/db6d2c252fc15287f9daebce81ab0afe.gif)](https://gyazo.com/db6d2c252fc15287f9daebce81ab0afe)  
+
 # 実装予定の機能
 ・チャットルーム編集機能  
 ・チャットルームプロフィール機能  
