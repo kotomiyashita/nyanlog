@@ -5,10 +5,9 @@ class Category < ActiveHash::Base
     { id: 3, name: 'トイレ' },
     { id: 4, name: '体重' },
     { id: 5, name: '写真' },
-    { id: 6, name: 'その他' },
+    { id: 6, name: 'その他' }
   ]
 
   include ActiveHash::Associations
   has_many :messages
-
-  end
+end

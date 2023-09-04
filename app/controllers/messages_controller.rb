@@ -3,12 +3,11 @@ class MessagesController < ApplicationController
     @message = Message.new
     @room = Room.find(params[:room_id])
 
-    if params[:category_id].present? && params[:category_id] != ''
-      @messages = @room.messages.where(category_id: params[:category_id]).includes(:user)
-    else
-      @messages = @room.messages.includes(:user)
-    end
-
+    @messages = if params[:category_id].present? && params[:category_id] != ''
+                  @room.messages.where(category_id: params[:category_id]).includes(:user)
+                else
+                  @room.messages.includes(:user)
+                end
   end
 
   def create
@@ -25,7 +24,6 @@ class MessagesController < ApplicationController
       format.html # 通常のHTMLレスポンス
       format.json { render json: @messages } # JSONレスポンス
     end
-
   end
 
   private
@@ -33,5 +31,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :category_id, images: []).merge(user_id: current_user.id)
   end
-
 end
