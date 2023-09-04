@@ -78,6 +78,8 @@ https://docs.google.com/spreadsheets/d/1wFhU2WeoMUDiP6p67OB_yW-sgrNzEcMmIWWezHZS
 
 # テーブル設計
 
+[![Image from Gyazo](https://i.gyazo.com/98267dd4577c1b559a7e69ae61c99acf.png)](https://gyazo.com/98267dd4577c1b559a7e69ae61c99acf)
+
 ## users テーブル
 
 | Column             | Type   | Options     |
