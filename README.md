@@ -75,9 +75,9 @@ https://docs.google.com/spreadsheets/d/1wFhU2WeoMUDiP6p67OB_yW-sgrNzEcMmIWWezHZS
 以下のコマンドを順に実行
 % git clone https://github.com/kotomiyashita/nyanlog  
 % cd nyanlog  
-% bundle install
-% rails db:create
-% rails db:migrate
+% bundle install  
+% rails db:create  
+% rails db:migrate  
 
 # 工夫したポイント
 チャットルーム作成時のメンバー追加機能や、画像投稿の際のエラーメッセージ表示などにjavascriptを使用したが、  
