@@ -22,7 +22,7 @@
     <%= render partial: 'message', collection: @messages %>
   </div>
 
-  <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
+  <%= form_with model: [@room, @message], data: {turbo: false}, class: 'form', local: true do |f| %>
     <div class="form-input">
       <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"message-category"}) %>
       <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
