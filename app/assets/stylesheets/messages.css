@@ -2,7 +2,7 @@
   display: flex;
 }
 .side-bar {
-  background-color: #253141;
+  background-color: #d0ba8e;
   width: 300px;
   height: 100vh;
 }
@@ -10,7 +10,7 @@
 .side-bar-header {
   height: 100px;
   padding: 0 20px;
-  background-color: #253141;
+  background-color: #9c8b69;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,14 +24,14 @@
 
 .create-room a {
   font-size: 10px;
-  border: 1px solid lightblue;
+  border: 1px solid  #f2d76b;
   padding: 14px;
-  color: deepskyblue;
+  color: #f2d76b;
   text-decoration: none;
 }
 
 .rooms {
-  background-color: #2F3E51;
+  background-color: #d1b06f;
   height: calc(100vh - 100px);
   padding: 0 20px;
   overflow: scroll;
@@ -47,7 +47,7 @@
 }
 
 .chat {
-  background-color: #FFFFFF;
+  background-color: #fcf9ee;
   width: calc(100vw - 300px);
 }
 
@@ -61,13 +61,13 @@
 .left-header {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .header-title {
-  color: #333;
+  color: #332003;
   font-size: 24px;
-  margin-top: 36px;
-  flex: 1;
+  text-align: center;
 }
 
 .header-category {
@@ -76,17 +76,18 @@
 }
 
 .filter-selectbox {
-  height: 50px;
-  width: 100px;
+  height: 30px;
+  width: 70px;
   padding: 4px 8px;
-  margin-left: 10px;
+  margin-left: 20px;
   vertical-align: middle;
+  font-size: 12px;
 }
 
 .search-submit {
   background-color: transparent;
   border: none;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   vertical-align: middle;
 }
@@ -97,13 +98,13 @@
 
 .header-button a {
   text-decoration: none;
-  border: 1px solid darkred;
-  color: darkred;
+  border: 1px solid rgb(109, 61, 3);
+  color: rgb(109, 61, 3);
   padding: 20px;
 }
 
 .messages {
-  background-color: #FAFAFA;
+  background-color: #f6f0d5;
   height: calc(100vh - 100px - 90px);
   padding: 46px 40px 0;
   overflow: scroll;
@@ -111,6 +112,7 @@
 
 .message {
   margin: 10px 0 0 0;
+  color: #332003;
 }
 
 .upper-message{
@@ -118,12 +120,12 @@
 }
 
 .message-user {
-  color: #434a54;
+  color: #332003;
   font-size: 16px;
 }
 
 .message-date {
-  color: #999;
+  color: #9b8f67;
   font-size: 12px;
   padding-left: 10px;
 }
@@ -133,13 +135,13 @@
 }
 
 .message-content {
-  color: #434a54;
+  color: #413b29;
   font-size: 14px;
   margin-bottom: 40px;
 }
 
 .form {
-  background-color: #DDDDDD;
+  background-color: #d0ba8e;
   height: 90px;
   padding: 20px 40px;
   display: flex;
@@ -164,7 +166,7 @@
 }
 
 .form-submit {
-  background-color: #38AEF0;
+  background-color: #3c8169;
   border: none;
   color: white;
   font-size: 16px;
@@ -175,7 +177,7 @@
 
 .form-image {
   font-size: 12px;
-  background-color: lightblue;
+  background-color: #3c8169;
   color: white;
   padding: 12px;
   width: 60px;
