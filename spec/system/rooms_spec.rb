@@ -17,10 +17,10 @@ RSpec.describe 'チャットルーム新規作成', type: :system do
       room_name = FactoryBot.build(:room).name
       fill_in 'room_name', with: room_name
       # 「新しいチャットルームを作成」ボタンをクリックするとユーザーモデルのカウントが1上がることを確認する
-      expect {
+      expect do
         click_on('新しいチャットルームを作成')
         sleep 1
-      }.to change { Room.count }.by(1)
+      end.to change { Room.count }.by(1)
       # トップページに遷移することを確認する
       expect(current_path).to eq(root_path)
       # トップページにチャットルーム名が表示されることを確認する
@@ -38,10 +38,10 @@ RSpec.describe 'チャットルーム新規作成', type: :system do
       # 誤った情報を入力する（例: チャットルーム名を空にする）
       fill_in 'room_name', with: ''
       # 「新しいチャットルームを作成」ボタンをクリックしてもユーザーモデルのカウントは上がらないことを確認する
-      expect {
+      expect do
         click_on('新しいチャットルームを作成')
         sleep 1
-      }.not_to change { Room.count }
+      end.not_to(change { Room.count })
       # チャットルーム新規作成ページへ戻されることを確認する
       expect(current_path).to eq(rooms_path)
     end
@@ -61,10 +61,10 @@ RSpec.describe 'チャットルームの削除機能', type: :system do
     # メッセージ情報を5つDBに追加する
     FactoryBot.create_list(:message, 5, room_id: @room_user.room.id, user_id: @room_user.user.id)
     # 「チャットを終了する」ボタンをクリックすることで、作成した5つのメッセージが削除されていることを確認する
-    expect {
+    expect do
       find_link('チャットを終了する',  href: room_path(@room_user.room)).click
       sleep 1
-    }.to change { @room_user.room.messages.count }.by(-5)
+    end.to change { @room_user.room.messages.count }.by(-5)
     # トップページに遷移していることを確認する
     expect(current_path).to eq(root_path)
   end
