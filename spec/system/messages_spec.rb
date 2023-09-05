@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "メッセージ投稿機能", type: :system do
+RSpec.describe 'メッセージ投稿機能', type: :system do
   before do
     basic_pass root_path
     @room_user = FactoryBot.create(:room_user)
@@ -18,10 +18,10 @@ RSpec.describe "メッセージ投稿機能", type: :system do
       fill_in 'message_content', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      expect {
+      expect do
         find('#form-btn').click
         sleep 1
-      }.to change { Message.count }.by(1)
+      end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
       expect(current_path).to eq(room_messages_path(@room_user.room))
@@ -39,10 +39,10 @@ RSpec.describe "メッセージ投稿機能", type: :system do
       attach_file('message[images][]', image_path, make_visible: true)
 
       # 送信した値がDBに保存されていることを確認する
-      expect {
+      expect do
         find('#form-btn').click
         sleep 1
-      }.to change { Message.count }.by(1)
+      end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
       expect(current_path).to eq(room_messages_path(@room_user.room))
@@ -62,10 +62,10 @@ RSpec.describe "メッセージ投稿機能", type: :system do
       fill_in 'message_content', with: post
 
       # 送信した値がDBに保存されていることを確認する
-      expect {
+      expect do
         find('#form-btn').click
         sleep 1
-      }.to change { Message.count }.by(1)
+      end.to change { Message.count }.by(1)
 
       # 投稿一覧画面に遷移していることを確認する
       expect(current_path).to eq(room_messages_path(@room_user.room))
@@ -76,21 +76,21 @@ RSpec.describe "メッセージ投稿機能", type: :system do
     end
     it '添付する画像が8枚までなら投稿に成功し、投稿一覧に8枚の画像がすべて表示される' do
       click_on(@room_user.room.name)
-  
+
       # カテゴリーを選択し、画像選択フォームに８枚の画像を添付する
       select 'ごはん', from: 'message-category'
       image_paths = (1..8).map { |i| Rails.root.join("public/images/test_image#{i}.png") }
       attach_file('message[images][]', image_paths, make_visible: true)
-  
+
       # 送信した値がDBに保存されていることを確認する
-      expect {
+      expect do
         find('#form-btn').click
         sleep 1
-      }.to change { Message.count }.by(1)
-  
+      end.to change { Message.count }.by(1)
+
       # 投稿一覧画面に遷移していることを確認する
       expect(current_path).to eq(room_messages_path(@room_user.room))
-  
+
       # 送信した画像がブラウザに表示されていることを確認する
       expect(page).to have_selector('img', count: 8)
     end
@@ -105,9 +105,9 @@ RSpec.describe "メッセージ投稿機能", type: :system do
       select 'ごはん', from: 'message-category'
 
       # DBに保存されていないことを確認する
-      expect {
+      expect do
         find('#form-btn').click
-      }.not_to change { Message.count }
+      end.not_to(change { Message.count })
 
       # 元のページに戻ってくることを確認する
       expect(current_path).to eq(room_messages_path(@room_user.room))
@@ -121,26 +121,26 @@ RSpec.describe "メッセージ投稿機能", type: :system do
       fill_in 'message_content', with: post
 
       # DBに保存されていないことを確認する
-      expect {
+      expect do
         find('#form-btn').click
-      }.not_to change { Message.count }
+      end.not_to(change { Message.count })
 
       # 元のページに戻ってくることを確認する
       expect(current_path).to eq(room_messages_path(@room_user.room))
     end
     it '添付する画像が9枚以上だとメッセージの送信に失敗する' do
       click_on(@room_user.room.name)
-    
+
       # カテゴリーを選択し、画像選択フォームに9枚の画像をまとめて添付する
       select 'ごはん', from: 'message-category'
       image_paths = (1..9).map { |i| Rails.root.join("public/images/test_image#{i}.png") }
       attach_file('message[images][]', image_paths, make_visible: true)
 
       # 送信ボタンをクリックしてもDBに保存されないことを確認する
-      expect {
-      find('#form-btn').click
-      sleep 1
-      }.not_to change { Message.count }
-    end    
+      expect do
+        find('#form-btn').click
+        sleep 1
+      end.not_to(change { Message.count })
+    end
   end
 end

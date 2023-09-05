@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :message do
-    content           {Faker::Lorem.sentence}
+    content           { Faker::Lorem.sentence }
     category_id       { Faker::Number.between(from: 2, to: 6) }
     association :user
     association :room

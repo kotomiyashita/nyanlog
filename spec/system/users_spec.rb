@@ -4,7 +4,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
-  context 'ユーザー新規登録ができるとき' do 
+  context 'ユーザー新規登録ができるとき' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
       # トップページに移動する
       basic_pass root_path
@@ -18,10 +18,10 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password', with: @user.password
       fill_in 'user_password_confirmation', with: @user.password_confirmation
       # サインアップボタンを押すとユーザーモデルのカウントが1上がることを確認する
-      expect{
+      expect  do
         find('input.btn').click
         sleep 1
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページへ遷移することを確認する
       expect(page).to have_current_path(root_path)
       # トップページにユーザー名が表示されることを確認する
@@ -42,10 +42,10 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_password', with: ''
       fill_in 'user_password_confirmation', with: ''
       # サインアップボタンを押してもユーザーモデルのカウントは上がらないことを確認する
-      expect{
+      expect  do
         find('input.btn').click
         sleep 1
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
       # 新規登録ページへ戻されることを確認する
       expect(page).to have_current_path(new_user_registration_path)
     end
@@ -66,7 +66,7 @@ RSpec.describe 'ユーザーログイン機能', type: :system do
     @user = FactoryBot.create(:user)
 
     # サインインページへ移動する
-    visit  new_user_session_path
+    visit new_user_session_path
 
     # ログインしていない場合、サインインページに遷移していることを確認する
     expect(current_path).to eq(new_user_session_path)
