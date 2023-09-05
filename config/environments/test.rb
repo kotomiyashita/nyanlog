@@ -57,4 +57,14 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  config.hosts << 'localhost'
+
+  config.selenium_chrome = {
+    url: 'http://localhost:3000',
+    browser: :chrome,
+    options: {
+      args: %w[headless disable-gpu no-sandbox disable-dev-shm-usage]
+    }
+  }
+
 end
