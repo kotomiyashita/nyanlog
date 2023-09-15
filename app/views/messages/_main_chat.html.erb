@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="messages">
+  <div class="messages" id="chat-messages">
     <%= render partial: 'message', collection: @messages %>
   </div>
 
@@ -36,7 +36,13 @@
 </div>
 
 <script>
+  // ページ読み込み時と新しいメッセージ追加時に最下部にスクロール
+  document.addEventListener("turbo:load", function() {
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  });
 
+  // 画像選択時の制限
   document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.hidden').addEventListener('change', function(e) {
       if (e.target.files.length > 8) {
