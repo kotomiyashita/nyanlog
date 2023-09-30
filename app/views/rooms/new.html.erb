@@ -26,16 +26,17 @@
         <label class='chat-room-form__label' for='room_user_ids'>チャットメンバー</label>
       </div>
       <div class='chat-room-form__field--right'>
+        <input type="text" class="user-seach" id="user-search" placeholder="ユーザーを検索">
         <select name='room[user_ids][]' id='room_user_ids' class='user-select' multiple='multiple'>
-          <option value=''>チャットするユーザーを選択してください</option>
           <% User.where.not(id: current_user.id).each do |user| %>
             <option value='<%= user.id %>'><%= user.name %></option>
           <% end %>
         </select>
-        <button type="button" id="add-user-button">ユーザー追加</button>
-        <div class='chat-room-form__field--left'>選択したユーザー:</div>
-        <div class='chat-room-form__field--right' id='selected-users-list'>
-          <div id="selected-users"></div>
+        <div class="add-user-button">
+          <button type="button" id="add-user-button">追加</button>
+        </div>
+        <div class='user-list' id='selected-users-list'>
+            <div id="selected-users"></div>
         </div>
       </div>
     </div>
@@ -44,10 +45,7 @@
     <%= f.hidden_field :user_ids, id: 'selected-user-ids' %>
     
     <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'></div>
-      <div class='chat-room-form__field--right'>
-        <%= f.submit '新しいチャットルームを作成', class: 'chat-room-form__action-btn' %>
-      </div>
+      <%= f.submit '新しいチャットルームを作成', class: 'chat-room-form__action-btn' %>
     </div>
   <% end %>
 </div>
@@ -58,13 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const addUserButton = document.getElementById('add-user-button');
   const selectedUsers = document.getElementById('selected-users');
   const userSelect = document.getElementById('room_user_ids'); // userSelect を追加
-  
-  // 初期選択を無効にする
-  userSelect.options[0].disabled = true;
-  userSelect.addEventListener('change', function () {
-    // ユーザーが選択したら初期選択を削除する
-    userSelect.options[0].selected = false;
-  });
 
   // ユーザーIDを保持する隠しフィールド
   const selectedUserIdsInput = document.getElementById('selected-user-ids');
@@ -77,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 選択したユーザーを表示するための要素を作成
     const userElement = document.createElement('div');
     userElement.textContent = selectedUserName;
+    userElement.classList.add('add-user-name');
 
     // 選択したユーザーを一時的に保持する要素に追加
     selectedUsers.appendChild(userElement);
@@ -85,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const removeUserButton = document.createElement('button');
     removeUserButton.type = 'button';
     removeUserButton.classList.add('remove-user-button');
-    removeUserButton.textContent = '削除';
+    removeUserButton.textContent = '×';
 
     // 削除ボタンをユーザーエレメントに追加
     userElement.appendChild(removeUserButton);
@@ -110,6 +102,44 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // selectedUserIdsをカンマ区切りの文字列に変換
     selectedUserIdsInput.value = selectedUserIds.join(',');
+    
+    // 選択したユーザーを再選択可能にする
+    userSelect.options[userSelect.selectedIndex].disabled = false;
+  });
+});
+
+// ユーザー検索
+document.addEventListener('DOMContentLoaded', function () {
+  const userSearchInput = document.getElementById('user-search');
+  const userSelect = document.getElementById('room_user_ids'); // 既存のセレクトボックス
+
+  // セレクトボックスを初期非表示にする
+  userSelect.style.display = 'none';
+
+  userSearchInput.addEventListener('input', function () {
+    const searchValue = userSearchInput.value.toLowerCase(); // 入力値を小文字に変換
+
+    // セレクトボックス内の全てのオプションを取得
+    const options = userSelect.querySelectorAll('option');
+
+    if (searchValue) {
+      // 検索テキストボックスに何か入力された場合、セレクトボックスを表示
+      userSelect.style.display = 'block';
+
+      options.forEach(function (option) {
+        const userName = option.textContent.toLowerCase();
+
+        // ユーザー名が検索文字列を含む場合は表示、それ以外は非表示にする
+        if (userName.includes(searchValue)) {
+          option.style.display = 'block'; // 表示
+        } else {
+          option.style.display = 'none'; // 非表示
+        }
+      });
+    } else {
+      // 検索テキストボックスが空の場合、セレクトボックスを非表示
+      userSelect.style.display = 'none';
+    }
   });
 });
 </script>
