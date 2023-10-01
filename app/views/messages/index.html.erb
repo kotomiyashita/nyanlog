@@ -9,16 +9,25 @@
   </div>
 
 <script>
-  const backButton = document.getElementById('back-button');
-  const roomList = document.getElementById('side-bar');
+  // ページが読み込まれたときに実行されるJavaScript
+  document.addEventListener('DOMContentLoaded', function () {
+    // 初期状態で side-bar を非表示にする
+    const sideBar = document.getElementById('side-bar');
+    sideBar.style.display = 'none';
 
-  backButton.addEventListener('click', () => {
-    // 戻るボタンがクリックされたときにルーム一覧を表示・非表示にする
-    if (roomList.style.display === 'none' || roomList.style.display === '') {
-      roomList.style.display = 'block';
-    } else {
-      roomList.style.display = 'none';
-    }
+    const backButton = document.getElementById('back-button');
+
+    // ＜ボタンがクリックされたときの処理
+    backButton.addEventListener('click', () => {
+      // side-bar の表示状態を切り替える
+      if (sideBar.style.display === 'none' || sideBar.style.display === '') {
+        sideBar.style.display = 'block';
+      } else {
+        sideBar.style.display = 'none';
+      }
+    });
+
+    // ここに messages#index での表示内容を更新するコードを記述
   });
 </script>
 </body>
