@@ -86,15 +86,6 @@
   cursor: pointer;
 }
 
-.search-submit {
-  background-color: transparent;
-  border: none;
-  font-size: 15px;
-  cursor: pointer;
-  vertical-align: middle;
-  cursor: pointer;
-}
-
 .header-button {
   margin-top: 40px;
 }
@@ -240,11 +231,7 @@
     margin-left: 10px;
     font-size: 8px;
   }
-  
-  .search-submit {
-    font-size: 10px;
-  }
-  
+
   .header-button {
     margin-top: 30px;
   }
@@ -375,15 +362,7 @@
     margin-left: 10px;
     font-size: 6px;
   }
-  
-  .search-submit {
-    background-color: transparent;
-    border: none;
-    font-size: 8px;
-    cursor: pointer;
-    vertical-align: middle;
-  }
-  
+
   .header-button {
     margin-top: 20px;
   }

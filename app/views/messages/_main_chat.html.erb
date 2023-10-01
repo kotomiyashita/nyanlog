@@ -8,9 +8,8 @@
         <%= @room.name %>
       </div>
       <div class="header-category">
-        <%= form_tag(room_messages_path(@room), method: :get, class: 'category-filter', remote: true) do %>
-          <%= select_tag :category_id, options_for_select([['全て', ''], *Category.where(id: 2..6).pluck(:name, :id)], (params[:category_id] || '')), class: 'filter-selectbox' %>
-          <%= submit_tag '🔍' , class: 'search-submit' %>
+        <%= form_tag(category_room_messages_path(@room), method: :get, class: 'category-filter', remote: true) do %>
+          <%= select_tag :category_id, options_for_select([['全て', ''], *Category.where(id: 2..6).pluck(:name, :id)], (params[:category_id] || '')), class: 'filter-selectbox', id: 'category-select' %>
         <% end %>
       </div>
     </div>
@@ -43,6 +42,26 @@
   document.addEventListener("turbo:load", function() {
     const chatMessages = document.getElementById('chat-messages');
     chatMessages.scrollTop = chatMessages.scrollHeight;
+  });
+
+  // カテゴリー選択が変更されたときに非同期リクエストを送信
+  $('#category-select').change(function () {
+    const selectedCategoryId = $(this).val();
+    $.ajax({
+      url: '<%= category_room_messages_path(@room) %>',
+      method: 'GET',
+      data: { category_id: selectedCategoryId },
+      dataType: 'json',
+      success: function (response) {
+        // レスポンスを使ってページを更新
+        // 例えば、メッセージリストを再描画するなど
+        const chatMessages = document.getElementById('chat-messages');
+        chatMessages.innerHTML = response.messages; // メッセージリストを更新
+      },
+      error: function (error) {
+        console.error('Error:', error);
+      }
+    });
   });
 
   // 画像選択時の制限
