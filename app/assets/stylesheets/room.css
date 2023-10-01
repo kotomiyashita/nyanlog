@@ -47,7 +47,7 @@ li {
 }
 .chat-room-form__input {
   float: left;
-  width: 100%;
+  width: 500px;
   line-height: 30px;
   padding: 10px 15px;
   box-sizing: border-box;
@@ -79,7 +79,7 @@ li {
   width: 70%;
 }
 .add-user-button{
-  margin: 10px 0;
+  padding: 10px 0;
 }
 .user-list{
   display: block;
@@ -88,7 +88,7 @@ li {
 .add-user-name{
   display: block;
   width: fit-content;
-  margin-bottom: 5px;
+  margin: 5px 0;
   padding: 0px 8px;
   background: #ddd;
   border-radius: 100vh;
@@ -115,6 +115,7 @@ li {
 .user-select {
   width: 500px;
   height: 50px;
+  margin-bottom: 5px;
 }
 
 .top-header {
@@ -156,21 +157,18 @@ li {
     font-size: 13px;
   }
   .user-seach{
-    float: left;
     width: 100%;
-    box-sizing: border-box;
     font-size: 13px;
     padding: 10px 15px;
   }
   .user-select{
-    float: left;
     width: 100%;
-    box-sizing: border-box;
     font-size: 13px;
     padding: 10px 15px;
+    margin-bottom: 5px;
   }
   .add-user-button{
-    margin: 10px 0;
+    padding: 10px 0;
   }
   .user-list{
     display: block;
@@ -259,21 +257,18 @@ li {
     font-size: 13px;
   }
   .user-seach{
-    float: left;
     width: 100%;
-    box-sizing: border-box;
     font-size: 13px;
     padding: 10px 15px;
   }
   .user-select{
-    float: left;
     width: 100%;
-    box-sizing: border-box;
     font-size: 13px;
     padding: 10px 15px;
+    margin-bottom: 5px;
   }
   .add-user-button{
-    margin: 10px 0;
+    padding: 10px 0;
   }
   .user-list{
     display: block;

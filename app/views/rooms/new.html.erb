@@ -26,12 +26,14 @@
         <label class='chat-room-form__label' for='room_user_ids'>チャットメンバー</label>
       </div>
       <div class='chat-room-form__field--right'>
-        <input type="text" class="user-seach" id="user-search" placeholder="ユーザーを検索">
-        <select name='room[user_ids][]' id='room_user_ids' class='user-select' multiple='multiple'>
-          <% User.where.not(id: current_user.id).each do |user| %>
-            <option value='<%= user.id %>'><%= user.name %></option>
-          <% end %>
-        </select>
+        <div class="user-seach-form">
+          <input type="text" class="user-seach" id="user-search" placeholder="ユーザーを検索">
+          <select name='room[user_ids][]' id='room_user_ids' class='user-select' multiple='multiple'>
+            <% User.where.not(id: current_user.id).each do |user| %>
+              <option value='<%= user.id %>'><%= user.name %></option>
+            <% end %>
+          </select>
+        </div>
         <div class="add-user-button">
           <button type="button" id="add-user-button">追加</button>
         </div>
