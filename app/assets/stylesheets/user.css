@@ -113,3 +113,84 @@
   padding: 0;
   font-size: 13px;
 }
+
+@media screen and (max-width: 960px) {
+  .account-page .account-page__inner {
+    width: 80vw;
+    margin: 60px auto;
+    padding: 60px;
+    background-color: #fff;
+    border: none;
+  }
+  .account-page .account-page__inner .account-page__inner--left, .account-page .account-page__inner .account-page__inner--right {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .account-page .account-page__inner {
+    width: 80vw;
+    margin: 60px auto;
+    padding: 60px;
+    background-color: #fff;
+    border: none;
+  }
+  .account-page .account-page__inner .account-page__inner--left, .account-page .account-page__inner .account-page__inner--right {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+  .account-page .account-page__header h2 {
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+    font-size: 20px;
+    font-weight: 100;
+    color: #3c8169;
+  }
+  .account-page .account-page__header h2:after {
+    content: "";
+    display: block;
+    width: 60px;
+    margin-top: 5px;
+    border-bottom: 1px solid #f2d76b;
+  }
+  .account-page .account-page__header h5 {
+    margin-bottom: 20px;
+    font-size: 10px;
+    font-weight: 200;
+  }
+  .account-page .account-page__header .btn {
+    margin-top: 10px;
+    color: #fff;
+    background-color: #ccc;
+    font-size: 10px;
+  }
+  .account-page .field {
+    margin-bottom: 5px;
+  }
+  .account-page .field .field-label {
+    padding: 10px 0;
+    letter-spacing: 1px;
+    font-size: 10px;
+    font-weight: 200;
+  }
+  .account-page .field .field-label i {
+    font-size: 8px;
+  }
+  .account-page .btn {
+    display: inline-block;
+    height: 30px;
+    padding: 0 10px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+  .account-page .field .field-input input {
+    font-size: 8px;
+  }
+}

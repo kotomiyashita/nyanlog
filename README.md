@@ -57,6 +57,8 @@ https://docs.google.com/spreadsheets/d/1wFhU2WeoMUDiP6p67OB_yW-sgrNzEcMmIWWezHZS
 [![Image from Gyazo](https://i.gyazo.com/db6d2c252fc15287f9daebce81ab0afe.gif)](https://gyazo.com/db6d2c252fc15287f9daebce81ab0afe)  
 
 # 実装予定の機能
+・レスポンシブ対応  
+・ユーザー検索機能（チットルーム作成・編集時）  
 ・チャットルーム編集機能  
 ・ユーザー検索機能(チャットルーム作成・編集時)  
 ・チャットルームプロフィール機能  
