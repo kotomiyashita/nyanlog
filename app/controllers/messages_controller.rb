@@ -26,6 +26,19 @@ class MessagesController < ApplicationController
     end
   end
 
+  # カテゴリ検索用アクション
+  def category
+    category_id = params[:category_id]
+    # カテゴリに基づいてメッセージをフィルタリング
+    if category_id.present?
+      messages = Message.where(category_id: category_id)
+    else
+      messages = Message.all
+    end
+    # JSON形式でメッセージを返す
+    render json: { messages: render_to_string(partial: 'messages/message', collection: messages) }
+  end
+
   private
 
   def message_params
