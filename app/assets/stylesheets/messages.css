@@ -395,7 +395,7 @@
     border: 1px solid rgb(109, 61, 3);
     color: rgb(109, 61, 3);
     padding: 5px;
-    font-size: 4px;
+    font-size: 8px;
   }  
 
   .messages {
@@ -404,16 +404,16 @@
   }
 
   .message-user {
-    font-size: 12px;
+    font-size: 15px;
   }
   
   .message-date {
-    font-size: 6px;
+    font-size: 10px;
     padding-left: 7px;
   }
   
   .message-content {
-    font-size: 10px;
+    font-size: 12px;
     margin-bottom: 10px;
   }
   
@@ -432,7 +432,7 @@
 
   .form-image {
     padding: 8px;
-    font-size: 6px;
+    font-size: 10px;
   }
   
   .form-submit {
