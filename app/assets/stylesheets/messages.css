@@ -116,6 +116,11 @@
 .message {
   margin: 10px 0 40px;
   color: #332003;
+  overflow: hidden;
+}
+
+.message-image {
+  margin-top: 0px; /* 画像とテキストの間に余白を設定 */
 }
 
 .upper-message{
