@@ -2,7 +2,9 @@
   <div class="chat-header">
     <div class="left-header">
       <div class="back-button">
-        <button id="back-button">＜</button>
+        <button id="back-button">
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
       </div>
       <div class="header-title">
         <%= @room.name %>
@@ -29,11 +31,15 @@
       <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"message-category"}) %>
       <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
       <label class="form-image">
-        <span class="image-file">画像</span>
+        <span class="image-icon">
+          <i class="fas fa-paperclip"></i>
+        </span>
         <%= f.file_field :images, multiple: true, accept: "image/*" , class: 'hidden' %>
       </label>
     </div>
-    <%= f.submit '送信', class: 'form-submit', id: 'form-btn' %>
+    <%= button_tag type: "submit", class: 'form-submit', id: 'form-btn' do%>
+      <i class="fa-solid fa-location-arrow"></i>
+    <% end %>
   <% end %>
 </div>
 
