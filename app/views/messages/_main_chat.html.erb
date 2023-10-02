@@ -29,13 +29,15 @@
   <%= form_with model: [@room, @message], data: {turbo: false}, class: 'form', local: true do |f| %>
     <div class="form-input">
       <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"message-category"}) %>
-      <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
-      <label class="form-image">
-        <span class="image-icon">
-          <i class="fas fa-paperclip"></i>
-        </span>
-        <%= f.file_field :images, multiple: true, accept: "image/*" , class: 'hidden' %>
-      </label>
+      <div class="content-form">
+        <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
+        <label class="form-image">
+          <span class="image-icon">
+            <i class="fas fa-paperclip"></i>
+          </span>
+          <%= f.file_field :images, multiple: true, accept: "image/*" , class: 'hidden' %>
+        </label>
+      </div>
     </div>
     <%= button_tag type: "submit", class: 'form-submit', id: 'form-btn' do%>
       <i class="fa-solid fa-location-arrow"></i>
