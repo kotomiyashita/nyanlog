@@ -16,7 +16,7 @@ RSpec.describe 'チャットルーム新規作成', type: :system do
       # 正しい情報を入力する（ファクトリーを使用してチャットルーム名を生成）
       room_name = FactoryBot.build(:room).name
       fill_in 'room_name', with: room_name
-      # 「新しいチャットルームを作成」ボタンをクリックするとユーザーモデルのカウントが1上がることを確認する
+      # 「新しいチャットルームを作成」ボタンをクリックするとルームモデルのカウントが1上がることを確認する
       expect do
         click_on('新しいチャットルームを作成')
         sleep 1
@@ -37,7 +37,7 @@ RSpec.describe 'チャットルーム新規作成', type: :system do
       expect(current_path).to eq(new_room_path)
       # 誤った情報を入力する（例: チャットルーム名を空にする）
       fill_in 'room_name', with: ''
-      # 「新しいチャットルームを作成」ボタンをクリックしてもユーザーモデルのカウントは上がらないことを確認する
+      # 「新しいチャットルームを作成」ボタンをクリックしてもルームモデルのカウントは上がらないことを確認する
       expect do
         click_on('新しいチャットルームを作成')
         sleep 1
