@@ -47,7 +47,7 @@ https://docs.google.com/spreadsheets/d/1wFhU2WeoMUDiP6p67OB_yW-sgrNzEcMmIWWezHZS
 
 ## チャットルーム作成機能
 チャットルーム新規作成  
-[![Image from Gyazo](https://i.gyazo.com/f114698c634123596c2ca83c14b686fe.png)](https://gyazo.com/f114698c634123596c2ca83c14b686fe)  
+[![Image from Gyazo][![Image from Gyazo](https://i.gyazo.com/b92b3adec4d97a8a7beb4150ec4005ac.png)](https://gyazo.com/b92b3adec4d97a8a7beb4150ec4005ac)  
 作成したチャットルーム  
 [![Image from Gyazo](https://i.gyazo.com/44fb18435b651287bdcc71ff9ffe36a1.png)](https://gyazo.com/44fb18435b651287bdcc71ff9ffe36a1)  
 ## メッセージ投稿機能
