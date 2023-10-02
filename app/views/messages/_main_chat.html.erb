@@ -29,7 +29,9 @@
       <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"message-category"}) %>
       <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
       <label class="form-image">
-        <span class="image-file">画像</span>
+        <span class="image-icon">
+          <i class="fas fa-paperclip"></i>
+        </span>
         <%= f.file_field :images, multiple: true, accept: "image/*" , class: 'hidden' %>
       </label>
     </div>
