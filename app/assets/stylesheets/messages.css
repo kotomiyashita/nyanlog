@@ -258,11 +258,15 @@
   }
   .back-button button{
     display: block;
-    color: #332003;
     background-color: transparent; /* 背景色を透明にする */
     border: none; /* 枠線を削除する */
     outline: none; /* ボーダーがクリック時に出ないようにする */
     cursor: pointer;
+  }
+
+  .fa-angle-left{
+    color: rgb(141, 132, 111);
+    font-size: 30px;
   }
 
   .rooms{
@@ -349,6 +353,11 @@
     align-items: center;
     justify-content: center;
   }
+
+  .fa-angle-left{
+    font-size: 26px;
+  }
+
   .header-title {
     color: #332003;
     font-size: 15px;
