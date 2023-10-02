@@ -79,6 +79,9 @@
 }
 
 .filter-selectbox {
+  appearance: none; /* デフォルトのスタイルを無効にする */
+  -webkit-appearance: none; /* Safari 対応 */
+  -moz-appearance: none;
   height: 30px;
   width: 70px;
   padding: 4px 8px;
@@ -156,6 +159,9 @@
 }
 
 .select-box{
+  appearance: none; /* デフォルトのスタイルを無効にする */
+  -webkit-appearance: none; /* Safari 対応 */
+  -moz-appearance: none;
   width: 30%;
   font-size: 12px;
   cursor: pointer;
