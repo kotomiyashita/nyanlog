@@ -79,9 +79,6 @@
 }
 
 .filter-selectbox {
-  appearance: none; /* デフォルトのスタイルを無効にする */
-  -webkit-appearance: none; /* Safari 対応 */
-  -moz-appearance: none;
   height: 30px;
   width: 70px;
   padding: 4px 8px;
@@ -89,6 +86,9 @@
   vertical-align: middle;
   font-size: 12px;
   cursor: pointer;
+  border: 1px solid rgb(141, 132, 111);
+  color: rgb(141, 132, 111);
+  background-color: white;
 }
 
 .header-button {
@@ -153,18 +153,25 @@
 }
 
 .form-input {
-  background-color: white;
   width: 100%;
   display: flex;
 }
 
 .select-box{
-  appearance: none; /* デフォルトのスタイルを無効にする */
-  -webkit-appearance: none; /* Safari 対応 */
-  -moz-appearance: none;
-  width: 30%;
+  width: 20%;
   font-size: 12px;
   cursor: pointer;
+  border: 1px solid rgb(141, 132, 111);
+  color: rgb(141, 132, 111);
+  background-color: white;
+  margin-right: 5px;
+}
+
+.content-form{
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  display: flex;
 }
 
 .form-message {
@@ -312,7 +319,6 @@
   }
   
   .form-input {
-    background-color: white;
     width: 100%;
     display: flex;
   }
