@@ -145,7 +145,7 @@
 .form {
   background-color: #d0ba8e;
   height: 90px;
-  padding: 20px 40px;
+  padding: 20px 30px 20px 40px;
   display: flex;
 }
 
@@ -169,14 +169,16 @@
 }
 
 .form-submit {
-  background-color: #3c8169;
+  background: none;
+  padding-left: 15px;
   border: none;
-  color: white;
-  font-size: 16px;
-  height: 50px;
-  margin-left: 15px;
-  padding: 0 20px;
+  text-align: center;
   cursor: pointer;
+}
+
+.fa-location-arrow {
+  font-size: 36px;
+  color: #3c8169; 
 }
 
 .form-image {
@@ -295,7 +297,7 @@
   .form {
     background-color: #d0ba8e;
     height: 70px;
-    padding: 15px 20px;
+    padding: 15px 15px 15px 20px;
     display: flex;
   }
   
@@ -316,14 +318,8 @@
     padding-left: 10px;
   }
   
-  .form-submit {
-    background-color: #3c8169;
-    border: none;
-    color: white;
-    font-size: 16px;
-    height: 40px;
-    margin-left: 15px;
-    padding: 0 20px;
+  .fa-location-arrow {
+    font-size: 30px;
   }
   
   .form-image {
@@ -408,7 +404,7 @@
   
   .form {
     height: 60px;
-    padding: 10px 15px;
+    padding: 10px 10px 10px 15px;
   }
 
   .select-box{
@@ -423,12 +419,14 @@
     padding: 6px;
   }
   
-  .form-submit {
-    font-size: 16px;
-    height: 40px;
-    margin-left: 15px;
-    padding: 0 20px;
+  .form-submit{
+    padding-left: 10px;
   }
+
+  .fa-location-arrow {
+    font-size: 24px;
+  }
+
   .message-image {
     max-width: 60%;
     max-height: 200px;

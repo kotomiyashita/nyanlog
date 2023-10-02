@@ -35,7 +35,9 @@
         <%= f.file_field :images, multiple: true, accept: "image/*" , class: 'hidden' %>
       </label>
     </div>
-    <%= f.submit '送信', class: 'form-submit', id: 'form-btn' %>
+    <%= button_tag type: "submit", class: 'form-submit', id: 'form-btn' do%>
+      <i class="fa-solid fa-location-arrow"></i>
+    <% end %>
   <% end %>
 </div>
 
